@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart &amp; Shine Beauty Parlour — Nizampet, Hyderabad</title>
+<meta name="description" content="Smart & Shine Beauty Parlour, Journalist Colony, Nizampet Hyderabad — demo website preview. Rated 5.0 (178 Justdial ratings).">
+<!-- Built to the permanent DESIGN + MOTION STANDARD (AGENT-BRIEF Phase 4, 2026-09-18) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/framer-motion@11/dist/framer-motion.js"></script>
+<script>
+  const EASE = [0.16, 1, 0.3, 1];
+  document.addEventListener("DOMContentLoaded", () => {
+    const { animate, inView, stagger } = window.Motion;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    inView("[data-reveal]", (el) => {
+      if (reduced) return;
+      animate(el.target,
+        { opacity: [0, 1], transform: ["translateY(48px) scale(0.94)", "translateY(0px) scale(1)"], filter: ["blur(10px)", "blur(0px)"] },
+        { duration: 0.9, delay: (parseFloat(el.target.dataset.reveal) || 0), ease: EASE });
+    }, { margin: "0px 0px -12% 0px" });
+
+    if (matchMedia("(pointer:fine)").matches && !reduced) {
+      document.querySelectorAll("[data-tilt]").forEach((card) => {
+        card.style.transformPerspective = "900px";
+        card.addEventListener("pointermove", (e) => {
+          const r = card.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          animate(card, { rotateX: -y * 8, rotateY: x * 8, scale: 1.02 }, { duration: 0.35, ease: EASE });
+        });
+        card.addEventListener("pointerleave", () => {
+          animate(card, { rotateX: 0, rotateY: 0, scale: 1 }, { duration: 0.5, ease: EASE });
+        });
+      });
+    }
+
+    if (!reduced) {
+      animate("[data-hero-stagger]",
+        { opacity: [0, 1], transform: ["translateY(28px)", "translateY(0)"] },
+        { duration: 0.8, delay: stagger(0.1), ease: EASE });
+    }
+  });
+</script>
+<style>
+  :root{
+    --bg:#09090b; --bg-soft:#111113; --card:rgba(255,255,255,.04);
+    --line:rgba(255,255,255,.06); --line-strong:rgba(255,255,255,.12);
+    --ink:#fafafa; --ink-soft:#a1a1aa; --ink-faint:#71717a;
+    --accent:#e4e4e7; --rose:#f472b6; --rose-soft:rgba(244,114,182,.14);
+    --radius:20px; --ease:cubic-bezier(0.16,1,0.3,1);
+    --font:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+    --step--1:clamp(0.85rem,0.82rem + 0.2vw,0.95rem);
+    --step-0:clamp(0.95rem,0.92rem + 0.3vw,1.08rem);
+    --step-1:clamp(1.15rem,1.05rem + 0.6vw,1.4rem);
+    --step-2:clamp(1.5rem,1.3rem + 1.2vw,2.1rem);
+    --step-3:clamp(2.1rem,1.5rem + 3vw,3.6rem);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font);font-size:var(--step-0);line-height:1.6;color:var(--ink);
+    background:var(--bg);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  img{max-width:100%;display:block}
+  :focus-visible{outline:2px solid var(--rose);outline-offset:3px;border-radius:6px}
+
+  .demo-ribbon{position:sticky;top:0;z-index:50;text-align:center;
+    background:repeating-linear-gradient(45deg,#18181b,#18181b 12px,#27272a 12px,#27272a 24px);
+    color:#fde68a;font-size:.78rem;font-weight:600;letter-spacing:.08em;
+    padding:.5rem 1rem;text-transform:uppercase}
+
+  .wrap{width:min(1150px,92%);margin-inline:auto}
+  section{padding:clamp(4rem,8vw,6rem) 0}
+
+  header.site{position:sticky;top:2.2rem;z-index:40;
+    background:rgba(9,9,11,.7);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+  .brand{font-weight:800;font-size:var(--step-1);letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+  .brand span{color:var(--rose)}
+  .nav a.btn{padding:.55rem 1.15rem;font-size:.88rem}
+
+  .btn{display:inline-flex;align-items:center;gap:.55rem;background:var(--accent);
+    color:#09090b;text-decoration:none;font-weight:700;border-radius:999px;
+    padding:.85rem 1.7rem;border:1px solid var(--line-strong);
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease),background .3s var(--ease)}
+  .btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 30px rgba(255,255,255,.08)}
+  .btn:active{transform:translateY(0) scale(.99)}
+  .btn.rose{background:var(--rose);color:#3f0722;border-color:rgba(244,114,182,.45)}
+  .btn.rose:hover{background:#ec4899;color:#fff}
+  .btn.ghost{background:rgba(255,255,255,.03);color:var(--ink);border:1px solid var(--line-strong)}
+  .btn.ghost:hover{background:rgba(255,255,255,.08)}
+
+  .hero{padding-top:clamp(4rem,9vw,7rem);position:relative}
+  .hero::before{content:"";position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+    width:640px;height:420px;border-radius:50%;background:rgba(244,114,182,.07);
+    filter:blur(120px);pointer-events:none}
+  .kicker{display:inline-block;background:rgba(255,255,255,.04);border:1px solid var(--line);
+    color:var(--ink-soft);font-weight:600;font-size:.8rem;letter-spacing:.14em;
+    text-transform:uppercase;border-radius:999px;padding:.4rem 1.05rem;margin-bottom:1.4rem}
+  h1{font-size:var(--step-3);line-height:1.06;letter-spacing:-.03em;font-weight:800;max-width:16ch}
+  h1 em{font-style:normal;background:linear-gradient(90deg,#f472b6 10%,#fafafa 90%);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  p.lead{max-width:46ch;margin:1.4rem 0 2.2rem;color:var(--ink-soft);font-size:var(--step-1)}
+  .cta-row{display:flex;gap:.9rem;flex-wrap:wrap}
+
+  h2.sec{font-size:var(--step-2);letter-spacing:-.02em;font-weight:700;max-width:26ch}
+  p.sec-sub{color:var(--ink-soft);margin:.7rem 0 3rem;max-width:54ch}
+  .bento{display:grid;gap:1rem;grid-template-columns:repeat(6,1fr)}
+  .tile{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    padding:clamp(1.5rem,3vw,2.5rem);position:relative;overflow:hidden;
+    transition:border-color .3s var(--ease);will-change:transform}
+  .tile:hover{border-color:rgba(244,114,182,.35)}
+  .t-a{grid-column:span 4;grid-row:span 2}
+  .t-b{grid-column:span 2;grid-row:span 2}
+  .t-c{grid-column:span 3}
+  .t-d{grid-column:span 3}
+  @media(max-width:900px){.bento{grid-template-columns:repeat(2,1fr)}
+    .t-a,.t-b,.t-c,.t-d{grid-column:span 2;grid-row:auto}}
+  @media(max-width:560px){.bento{grid-template-columns:1fr}
+    .t-a,.t-b,.t-c,.t-d{grid-column:span 1}}
+
+  .tile .icon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+    background:var(--rose-soft);border:1px solid rgba(244,114,182,.25);font-size:1.25rem;
+    color:var(--rose);margin-bottom:1.1rem}
+  .tile h3{font-size:var(--step-1);letter-spacing:-.015em;font-weight:700}
+  .tile p{color:var(--ink-soft);margin-top:.5rem;font-size:var(--step--1)}
+  .stat{font-size:var(--step-3);font-weight:800;letter-spacing:-.03em;line-height:1;
+    background:linear-gradient(90deg,#f472b6,#fafafa);-webkit-background-clip:text;
+    background-clip:text;color:transparent}
+  .stat-sub{color:var(--ink-faint);font-size:var(--step--1);margin-top:.6rem}
+  .media{aspect-ratio:16/7;border-radius:14px;margin-bottom:1.4rem;overflow:hidden;
+    border:1px solid var(--line);
+    background:linear-gradient(135deg,#1b1420,#0d0d10);display:grid;place-items:center;
+    color:var(--ink-faint);font-size:.85rem;text-align:center;padding:1rem}
+  .tile-b .media{aspect-ratio:4/5;margin:0 0 1.2rem}
+  .svc-list{list-style:none;margin-top:1.2rem;display:grid;gap:.55rem}
+  .svc-list li{display:flex;gap:.6rem;align-items:baseline;color:var(--ink-soft);font-size:var(--step--1)}
+  .svc-list li::before{content:"✦";color:var(--rose);font-size:.8rem}
+
+  .gallery{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+  .ph{aspect-ratio:4/5;border-radius:var(--radius);border:1px solid var(--line);
+    background:linear-gradient(135deg,#16101a,#0c0c0e);display:grid;place-items:center;
+    color:var(--ink-faint);font-size:.85rem;text-align:center;padding:1rem;
+    transition:transform .35s var(--ease),border-color .35s var(--ease)}
+  .ph:hover{transform:scale(1.03);border-color:rgba(244,114,182,.35)}
+
+  .contact-card{background:linear-gradient(135deg,rgba(244,114,182,.08),rgba(255,255,255,.02));
+    border:1px solid var(--line-strong);border-radius:calc(var(--radius)*1.3);
+    backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+    padding:clamp(2rem,5vw,3.5rem);text-align:center}
+  .contact-card h2{font-size:var(--step-2);letter-spacing:-.02em;margin-bottom:.6rem}
+  .contact-card p{color:var(--ink-soft);margin-bottom:1.6rem}
+
+  footer.site{border-top:1px solid var(--line);padding:2.5rem 0 3rem;text-align:center;
+    color:var(--ink-faint);font-size:.82rem}
+  footer.site .disclaimer{margin-top:.8rem;font-size:.72rem;opacity:.75;max-width:62ch;margin-inline:auto}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+    [data-reveal]{opacity:1!important;filter:none!important;transform:none!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="demo-ribbon">⚠ Demo preview — not the official website</div>
+
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="#top">Smart &amp; <span>Shine</span></a>
+    <a class="btn" href="#contact">Book Now</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="kicker" data-hero-stagger>Journalist Colony · Nizampet, Hyderabad</span>
+      <h1 data-hero-stagger>Smart &amp; Shine<br><em>— beauty, rated 5.0 by 178 customers</em></h1>
+      <p class="lead" data-hero-stagger>Nizampet's highest-rated beauty parlour on Justdial — hair, skin, nails, waxing and makeup under one roof. This demo shows how your parlour could look online.</p>
+      <div class="cta-row" data-hero-stagger>
+        <a class="btn rose" href="https://www.justdial.com/Hyderabad/Smart-Shine-Beauty-Parlour-Nizampet/040PXX40-XX40-230421191926-R6Y2_BZDET"
+           aria-label="Call Smart and Shine Beauty Parlour via Justdial">📞 Call Now</a>
+        <a class="btn ghost" href="#services">Explore Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENTO FEATURES -->
+  <section id="services">
+    <div class="wrap">
+      <h2 class="sec" data-reveal="0">Why 178 customers rated us 5.0★</h2>
+      <p class="sec-sub" data-reveal="0.05">Every claim below comes from the parlour's public Justdial listing — nothing invented.</p>
+      <div class="bento">
+        <article class="tile t-a" data-reveal="0" data-tilt>
+          <div class="media">Owner's real photo goes here (16:7) — interior / makeover shot</div>
+          <h3>Nizampet's highest-rated parlour</h3>
+          <p>A perfect 5.0 average across 178 Justdial ratings — the strongest review profile of any beauty parlour in Nizampet, built entirely on walk-ins and word of mouth.</p>
+          <ul class="svc-list">
+            <li>Hair care — cuts, styling, treatments</li>
+            <li>Skin care — clean-ups, facials</li>
+            <li>Nails — manicure &amp; pedicure</li>
+            <li>Hair removal — waxing</li>
+            <li>Makeup — occasion &amp; bridal-ready looks</li>
+          </ul>
+          <a class="btn" style="margin-top:1.6rem" href="https://www.justdial.com/Hyderabad/Smart-Shine-Beauty-Parlour-Nizampet/040PXX40-XX40-230421191926-R6Y2_BZDET">See rate card on Justdial</a>
+        </article>
+        <article class="tile tile-b t-b" data-reveal="0.08" data-tilt>
+          <div class="media">Photo (4:5) — signature look / storefront</div>
+          <div class="stat">5.0★</div>
+          <p class="stat-sub">178 Justdial ratings · Journalist Colony, Nizampet</p>
+        </article>
+        <article class="tile t-c" data-reveal="0" data-tilt>
+          <div class="icon">✦</div>
+          <h3>Full-service menu</h3>
+          <p>Hair, skin, nails, hair removal and makeup — a complete service range per the parlour's public Justdial catalog.</p>
+        </article>
+        <article class="tile t-d" data-reveal="0.08" data-tilt>
+          <div class="icon">📍</div>
+          <h3>Easy to reach</h3>
+          <p>Journalist Colony, Nizampet, Hyderabad — easy to locate, right in the heart of the colony.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" style="border-block:1px solid var(--line);background:#0c0c0e">
+    <div class="wrap">
+      <h2 class="sec" data-reveal="0">Gallery</h2>
+      <p class="sec-sub" data-reveal="0.05">Owner's real photos go here after approval — placeholders until then.</p>
+      <div class="gallery">
+        <div class="ph" data-reveal="0" data-tilt>Bridal look<br>(from owner)</div>
+        <div class="ph" data-reveal="0.06" data-tilt>Hair styling<br>(from owner)</div>
+        <div class="ph" data-reveal="0.12" data-tilt>Facial &amp; skin<br>(from owner)</div>
+        <div class="ph" data-reveal="0.18" data-tilt>Nail art<br>(from owner)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card" data-reveal="0" data-tilt>
+        <h2>Visit or call us</h2>
+        <p>Smart &amp; Shine Beauty Parlour · Journalist Colony, Nizampet, Hyderabad</p>
+        <a class="btn rose" href="https://www.justdial.com/Hyderabad/Smart-Shine-Beauty-Parlour-Nizampet/040PXX40-XX40-230421191926-R6Y2_BZDET"
+           aria-label="Call Smart and Shine Beauty Parlour via Justdial">📞 Call via Justdial</a>
+        <p style="margin-top:1.2rem;font-size:.8rem;color:var(--ink-faint)">Direct WhatsApp button will be added once the owner confirms their number.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <p>© 2026 Smart &amp; Shine Beauty Parlour · Journalist Colony, Nizampet, Hyderabad</p>
+    <p class="disclaimer">This is a design demo created by Gowtham (web designer, Hyderabad) for preview purposes only. Not the official website. Business details shown are from the public Justdial listing (5.0★, 178 ratings); photos are placeholders until the owner approves.</p>
+  </div>
+</footer>
+
+</body>
+</html>
